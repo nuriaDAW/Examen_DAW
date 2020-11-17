@@ -8,19 +8,19 @@ use SujalPatel\IntToEnglish\IntToEnglish;
 if (!empty($_REQUEST['lat1'])) {
 
 
-    // Set our Lat/Long coordinates
+    // Coordenadas
     $p1 = new LatLong($_REQUEST['lat1'], $_REQUEST['lon1']);
     $p2 = new LatLong($_REQUEST['lat2'], $_REQUEST['lon2']);
 
-    // Get the distance between these two Lat/Long coordinates...
+    // Calcula la distancia entre los dos puntos
     $distanceCalculator = new DistanceCalculator($p1, $p2);
 
-    // You can then compute the distance...
     $distance = $distanceCalculator->get();
 
-    // We can now output the miles using the asMiles() method, you can also calculate and use asKilometres() or asNauticalMiles() as required!
+    // Muestra la distancia en kilómetros
     echo 'La distancia en kilómetros es: ' . $distance->asKilometres();
 
+    // Muestra la distancia en inglés
     echo '<br > La distancia en inglés es de: ' . IntToEnglish::Int2Eng(round($distance->asKilometres()));
 } else {
 
